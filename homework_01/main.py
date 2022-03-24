@@ -34,9 +34,7 @@ def is_even(number):
 
 def is_prime(number):
     num = abs(number)
-    if num == 1:
-        result = True
-    elif num > 2:
+    if num > 1:
         result = True
         for i in range(2, number):
             if number % i == 0:
@@ -47,7 +45,7 @@ def is_prime(number):
     return result
 
 
-def filter_numbers(numbers, type=INTEGER):
+def filter_numbers(numbers, num_type=INTEGER):
     """
     функция, которая на вход принимает список из целых чисел,
     и возвращает только чётные/нечётные/простые числа
@@ -58,15 +56,15 @@ def filter_numbers(numbers, type=INTEGER):
     <<< [2, 4]
     """
     result = []
-    if type == "odd":
+    if num_type == "odd":
         for i in numbers:
             if is_odd(i):
                 result.append(i)
-    elif type == "even":
+    elif num_type == "even":
         for i in numbers:
             if is_even(i):
                 result.append(i)
-    elif type == "prime":
+    elif num_type == "prime":
         for i in numbers:
             if is_prime(i):
                 result.append(i)
