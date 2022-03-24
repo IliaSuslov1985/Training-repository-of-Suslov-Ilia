@@ -78,7 +78,6 @@ print('\n')
 print("power_numbers are:", power_numbers(1, 2, 5, 7))
 
 print('\n')
-print("{} is {}".format(INTEGER, filter_numbers(range(1, 12))))
 print("{} is {}".format(ODD, filter_numbers(range(1, 12), ODD)))
 print("{} is {}".format(EVEN, filter_numbers(range(1, 12), EVEN)))
 print("{} is {}".format(PRIME, filter_numbers(range(1, 12), PRIME)))
