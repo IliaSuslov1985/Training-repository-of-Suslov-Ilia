@@ -10,6 +10,7 @@ def power_numbers(*numbers, power=2):
     >>> power_numbers(1, 2, 5, 7)
     <<< [1, 4, 25, 49]
     """
+    print(f'\tnumbers are {numbers}\n')
     result = []
     for number in numbers:
         result.append(number ** power)
@@ -17,11 +18,18 @@ def power_numbers(*numbers, power=2):
     return result
 
 
+# constants
+my_list = range(1, 12)
+
 # filter types
 INTEGER = "integer"
 ODD = "odd"
 EVEN = "even"
 PRIME = "prime"
+
+
+def is_integer(number):
+    return type(number) is int
 
 
 def is_odd(number):
@@ -45,44 +53,41 @@ def is_prime(number):
     return result
 
 
-def filter_numbers(numbers, num_type=INTEGER):
+def filter_numbers(numbers, filter_type=INTEGER):
     """
     функция, которая на вход принимает список из целых чисел,
     и возвращает только чётные/нечётные/простые числа
     (выбор производится передачей дополнительного аргумента)
-    >>> filter_numbers(range(1, 11), ODD)
+    >>> filter_numbers(range(1, 11),ODD)
     <<< [1, 3]
-    >>> filter_numbers(range(1, 11), EVEN)
+    >>> filter_numbers(range(1, 11),EVEN)
     <<< [2, 4]
     """
-    result = []
-    if num_type == "odd":
-        for i in numbers:
-            if is_odd(i):
-                result.append(i)
-    elif num_type == "even":
-        for i in numbers:
-            if is_even(i):
-                result.append(i)
-    elif num_type == "prime":
-        for i in numbers:
-            if is_prime(i):
-                result.append(i)
+    if filter_type == "odd":
+        result = list(filter(is_odd, numbers))
+    elif filter_type == "even":
+        result = list(filter(is_even, numbers))
+    elif filter_type == "prime":
+        result = list(filter(is_prime, numbers))
     else:
-        result = numbers
+        result = list(numbers)
 
     return result
 
 
-print('\n')
-print("power_numbers are:", power_numbers(1, 2, 5, 7))
+print('\nФункция, которая принимает N целых чисел и возвращает список квадратов этих чисел')
+print("\tpower_numbers are:", power_numbers(1, 2, 5, 7))
 
-print('\n')
-print("{} is {}".format(ODD, filter_numbers(range(1, 12), ODD)))
-print("{} is {}".format(EVEN, filter_numbers(range(1, 12), EVEN)))
-print("{} is {}".format(PRIME, filter_numbers(range(1, 12), PRIME)))
+print('\nФункция, которая на вход принимает список из целых чисел,'
+      ' и возвращает только чётные/нечётные/простые числа (вариант решения №1)')
+print("\t{} input is \t{}\n".format(INTEGER, filter_numbers(my_list, INTEGER)))
+print("\t{} result is \t\t{}".format(ODD, filter_numbers(my_list, ODD)))
+print("\t{} result is \t\t{}".format(EVEN, filter_numbers(my_list, EVEN)))
+print("\t{} result is \t{}".format(PRIME, filter_numbers(my_list, PRIME)))
 
-print('\n')
-print("{} is {}".format(ODD, list(filter(is_odd, range(1, 12)))))
-print("{} is {}".format(EVEN, list(filter(is_even, range(1, 12)))))
-print("{} is {}".format(PRIME, list(filter(is_prime, range(1, 12)))))
+print('\nФункция, которая на вход принимает список из целых чисел,'
+      ' и возвращает только чётные/нечётные/простые числа (вариант решения №2)')
+print("\t{} input is \t{}\n".format(INTEGER, list(filter(is_integer, my_list))))
+print("\t{} result is \t\t{}".format(ODD, list(filter(is_odd, my_list))))
+print("\t{} result is \t\t{}".format(EVEN, list(filter(is_even, my_list))))
+print("\t{} result is \t{}".format(PRIME, list(filter(is_prime, my_list))))
