@@ -63,11 +63,11 @@ def filter_numbers(numbers, filter_type=INTEGER):
     >>> filter_numbers(range(1, 11),EVEN)
     <<< [2, 4]
     """
-    if filter_type == "odd":
+    if filter_type == ODD:
         result = list(filter(is_odd, numbers))
-    elif filter_type == "even":
+    elif filter_type == EVEN:
         result = list(filter(is_even, numbers))
-    elif filter_type == "prime":
+    elif filter_type == PRIME:
         result = list(filter(is_prime, numbers))
     else:
         result = list(numbers)
